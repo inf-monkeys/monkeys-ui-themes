@@ -104,11 +104,10 @@ const QuickActionCard: React.FC<QuickActionCardProps> = ({ name, iconUrl, titleU
         borderRadius: '1rem',
         padding: '26px 20px',
         cursor: 'pointer',
-        background: isHovered
-          ? 'linear-gradient(135deg, rgba(77, 143, 157, 0.3) 0%, rgba(65, 104, 135, 0.3) 100%)'
-          : 'linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(30, 30, 30, 0.6) 100%)',
-        backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.5625) 2%, rgba(90, 87, 83, 0.75) 80%)',
+        backgroundBlendMode: 'overlay',
+        border: '1.76px solid rgba(255, 255, 255, 0.5)',
+        boxShadow: 'inset 0px 0px 0px 0px rgba(0, 0, 0, 0.1)',
         transition: 'all 0.3s ease',
         minHeight: '350px',
       }}
@@ -237,9 +236,13 @@ export function ArtistLandingPage({
           top: 0,
           left: 0,
           width: '100%',
+          height: '100px',
           zIndex: 20,
           padding: '30px',
           boxSizing: 'border-box',
+          boxShadow: 'inset 4px 4px 8.7px 0px rgba(255, 255, 255, 0.25)',
+          backdropFilter: 'blur(10px)',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
         }}
       >
         <div
@@ -278,17 +281,25 @@ export function ArtistLandingPage({
               <button
                 onClick={onLogin}
                 style={{
-                  padding: '8px 24px',
-                  borderRadius: '20px',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
                   border: '1px solid rgba(255, 255, 255, 0.3)',
                   background: 'rgba(255, 255, 255, 0.1)',
                   color: '#fff',
                   cursor: 'pointer',
                   fontSize: '14px',
                   transition: 'all 0.3s',
+                  backdropFilter: 'blur(10px)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
-                登录
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
               </button>
             )}
           </div>
@@ -311,8 +322,9 @@ export function ArtistLandingPage({
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            paddingTop: '140px',
+            alignItems: 'flex-start',
+            padding: '150px 0 0 30px',
+            gap: '30px',
           }}
         >
           <img
@@ -326,17 +338,20 @@ export function ArtistLandingPage({
             onClick={handleToWorkbench}
             style={{
               marginTop: '40px',
+              width: '308px',
+              height: '77px',
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'center',
               gap: '12px',
-              padding: '16px 32px',
-              background: 'rgba(0, 0, 0, 0.6)',
-              borderRadius: '12px',
+              background: 'linear-gradient(103deg, #4D8F9D 0%, #416887 100%)',
+              borderRadius: '15px',
               cursor: 'pointer',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: 'inset 4px 4px 8.7px 0px rgba(255, 255, 255, 0.25), 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.2)',
               transition: 'all 0.3s',
               color: '#fff',
-              fontSize: '18px',
+              fontSize: '26px',
+              fontWeight: 600,
             }}
           >
             <svg width="24" height="23" viewBox="0 0 24 23" fill="#fff">
