@@ -9,7 +9,7 @@ registerTheme(
   },
   {
     name: 'Artist Theme',
-    description: '艺术家工作室主题',
+    description: 'Artist Theme Components for Monkeys UI',
     version: '1.0.0',
   }
 );

@@ -11,7 +11,7 @@ registerTheme(
   },
   {
     name: 'BSD Theme',
-    description: '波司登品牌定制主题 - 服装设计 AI 平台',
+    description: 'BSD Theme Components for Monkeys UI',
     version: '1.0.0',
   }
 );

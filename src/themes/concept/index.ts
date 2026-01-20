@@ -9,7 +9,7 @@ registerTheme(
   },
   {
     name: 'Concept Design Theme',
-    description: '概念设计主题 - 设计工作台',
+    description: 'Concept Design Theme Components for Monkeys UI',
     version: '1.0.0',
   }
 );

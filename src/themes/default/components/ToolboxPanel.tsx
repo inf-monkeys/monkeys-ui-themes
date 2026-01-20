@@ -1,5 +1,17 @@
 import React from 'react';
-import type { ToolboxPanelProps } from '../../types';
+
+export interface ToolDefinition {
+  id: string;
+  title: string;
+  description?: string;
+}
+
+export interface ToolboxPanelProps {
+  className?: string;
+  style?: React.CSSProperties;
+  tools?: ToolDefinition[];
+  onToolSelect?: (toolId: string) => void;
+}
 
 /**
  * Default Toolbox Panel - 默认主题的工具箱面板

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { resolveComponent } from '../../registry';
+import { resolveComponent } from '../registry';
 
 export interface DynamicComponentProps {
   /** 当前主题 ID */
@@ -35,7 +35,7 @@ export function DynamicComponent({
   const Component = resolveComponent(themeId, name);
 
   if (!Component) {
-    if (process.env.NODE_ENV === 'development') {
+    if (typeof window !== 'undefined' && (window as any).__DEV__) {
       console.warn(
         `[monkeys-ui-themes] Component "${name}" not found for theme "${themeId}"`
       );

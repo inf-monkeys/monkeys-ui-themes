@@ -7,19 +7,19 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./registry": {
+      "types": "./dist/registry/index.d.ts",
       "import": "./dist/registry/index.mjs",
-      "require": "./dist/registry/index.js",
-      "types": "./dist/registry/index.d.ts"
+      "require": "./dist/registry/index.js"
     },
     "./themes/*": {
+      "types": "./dist/themes/*/index.d.ts",
       "import": "./dist/themes/*/index.mjs",
-      "require": "./dist/themes/*/index.js",
-      "types": "./dist/themes/*/index.d.ts"
+      "require": "./dist/themes/*/index.js"
     }
   },
   "files": [
@@ -40,6 +40,8 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "eslint": "^8.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^5.0.0",
     "tsup": "^8.0.0",
     "typescript": "^5.0.0"

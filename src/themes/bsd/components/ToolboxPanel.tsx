@@ -1,5 +1,21 @@
 import React from 'react';
-import type { ToolboxPanelProps, ToolDefinition } from '../../types';
+
+// 工具定义类型
+export interface ToolDefinition {
+  id: string;
+  title: string;
+  description?: string;
+  icon?: string;
+  category?: string;
+}
+
+// 工具箱面板 Props
+export interface ToolboxPanelProps {
+  className?: string;
+  style?: React.CSSProperties;
+  tools?: ToolDefinition[];
+  onToolSelect?: (toolId: string) => void;
+}
 
 // BSD 工具箱封面 URL 前缀
 const BSD_TOOLBOX_COVER_PREFIX =

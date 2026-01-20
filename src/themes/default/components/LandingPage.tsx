@@ -1,5 +1,11 @@
 import React from 'react';
-import type { LandingPageProps } from '../../types';
+
+export interface LandingPageProps {
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+  onNavigate?: (path: string) => void;
+}
 
 /**
  * Default Landing Page - 默认主题的 Landing Page
