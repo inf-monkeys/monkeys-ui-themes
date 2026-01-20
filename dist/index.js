@@ -140,32 +140,32 @@ var BSD_DEFAULT_FEATURE_CARDS = [
   {
     title: "\u7075\u611F\u751F\u6210",
     subtitle: "\u7531\u63D0\u793A\u8BCD\u751F\u6210\u8BBE\u8BA1\u7A3F",
-    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/homecard1.png"
+    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard1.png"
   },
   {
     title: "\u81EA\u7531\u88C2\u53D8",
     subtitle: "\u7531\u53C2\u8003\u56FE\u7247\u548C\u63D0\u793A\u8BCD\u751F\u6210\u8BBE\u8BA1\u7A3F",
-    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E8%87%AA%E7%94%B1%E8%A3%82%E5%8F%98%E5%BA%95.png"
+    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard2.png"
   },
   {
     title: "\u98CE\u683C\u878D\u5408",
     subtitle: "\u878D\u5408\u591A\u7C7B\u578B\u53C2\u8003\u56FE\u7247\u751F\u6210\u8BBE\u8BA1\u56FE",
-    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E9%A3%8E%E6%A0%BC%E8%9E%8D%E5%90%88.png"
+    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard3.png"
   },
   {
     title: "\u5C40\u90E8\u4FEE\u6539",
     subtitle: "\u5212\u5B9A\u9009\u533A\uFF0C\u9009\u53D6\u5185\u8BBE\u8BA1\u4FEE\u6539",
-    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E5%B1%80%E9%83%A8%E4%BF%AE%E6%94%B9.png"
+    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard4.png"
   },
   {
     title: "\u7EBF\u7A3F\u6210\u8863",
     subtitle: "\u53C2\u8003\u7EBF\u7A3F\u56FE\u751F\u6210\u8BBE\u8BA1\u7A3F",
-    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E7%BA%BF%E7%A8%BF%E6%88%90%E8%A1%A3.png"
+    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard5.png"
   },
   {
     title: "\u66F4\u591AAI\u5DE5\u5177",
     subtitle: "\u8BBF\u95EE\u4F60\u7684\u8BBE\u8BA1\u5DE5\u5177\u7BB1",
-    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E6%9B%B4%E5%A4%9Aai%E5%B7%A5%E5%85%B7.png",
+    imageUrl: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard6.png",
     isToolbox: true
   }
 ];

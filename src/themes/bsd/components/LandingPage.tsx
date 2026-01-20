@@ -68,32 +68,32 @@ export const BSD_DEFAULT_FEATURE_CARDS: FeatureCardData[] = [
   {
     title: '灵感生成',
     subtitle: '由提示词生成设计稿',
-    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/homecard1.png',
+    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard1.png',
   },
   {
     title: '自由裂变',
     subtitle: '由参考图片和提示词生成设计稿',
-    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E8%87%AA%E7%94%B1%E8%A3%82%E5%8F%98%E5%BA%95.png',
+    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard2.png',
   },
   {
     title: '风格融合',
     subtitle: '融合多类型参考图片生成设计图',
-    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E9%A3%8E%E6%A0%BC%E8%9E%8D%E5%90%88.png',
+    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard3.png',
   },
   {
     title: '局部修改',
     subtitle: '划定选区，选取内设计修改',
-    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E5%B1%80%E9%83%A8%E4%BF%AE%E6%94%B9.png',
+    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard4.png',
   },
   {
     title: '线稿成衣',
     subtitle: '参考线稿图生成设计稿',
-    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E7%BA%BF%E7%A8%BF%E6%88%90%E8%A1%A3.png',
+    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard5.png',
   },
   {
     title: '更多AI工具',
     subtitle: '访问你的设计工具箱',
-    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E6%9B%B4%E5%A4%9Aai%E5%B7%A5%E5%85%B7.png',
+    imageUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/newhomecard6.png',
     isToolbox: true,
   },
 ];
