@@ -22,6 +22,7 @@ interface ConceptDesignLandingPageProps {
     style?: React.CSSProperties;
 }
 declare const CONCEPT_CONFIG: {
+    backgroundUrl: string;
     titleUrl: string;
     titleTailUrl: string;
     othersUrl: string;

@@ -29,6 +29,7 @@ export interface ConceptDesignLandingPageProps {
 // ==================== 默认配置 ====================
 
 export const CONCEPT_CONFIG = {
+  backgroundUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/concept-design/bg.jpg',
   titleUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/concept-design/title.svg',
   titleTailUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/concept-design/title_tail.svg',
   othersUrl: 'https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/concept-design/others.svg',
@@ -109,9 +110,14 @@ export function ConceptDesignLandingPage({
       style={{
         display: 'flex',
         flexDirection: 'column',
+        width: '100%',
+        height: '100%',
         minHeight: '100vh',
         padding: '40px 80px',
-        background: 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)',
+        backgroundImage: `url('${CONCEPT_CONFIG.backgroundUrl}')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'top center',
+        backgroundSize: 'cover',
         position: 'relative',
         ...style,
       }}
