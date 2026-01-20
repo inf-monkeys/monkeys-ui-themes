@@ -1,6 +1,6 @@
 # monkeys-ui-themes
 
-Monkeys UI 主题组件库 - 用于 OEM 客户定制化组件管理。
+Monkeys UI 主题组件库
 
 ## 安装
 
