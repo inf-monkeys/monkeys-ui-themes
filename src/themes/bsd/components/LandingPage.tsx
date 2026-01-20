@@ -108,12 +108,14 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, subtitle, imageUrl, onClick }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   return (
     <div
       onClick={onClick}
       style={{
         flex: '1 1 0',
-        minWidth: 'clamp(12rem, 15vw, 20rem)',
+        minWidth: 'clamp(12rem, 15vw, 28rem)',
         aspectRatio: '273 / 366',
         borderRadius: 'clamp(15px, 1.5vw, 20px)',
         background: 'linear-gradient(168deg, rgba(23, 23, 23, 0) 35%, rgba(39, 77, 189, 0.715) 72%, #2D62FF 87%)',
@@ -125,22 +127,32 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, subtitle, imageUrl, on
         flexDirection: 'column',
         overflow: 'hidden',
         transition: 'transform 0.3s',
+        transform: isHovered ? 'scale(1.05)' : 'scale(1)',
       }}
-      onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
-      onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div style={{ position: 'relative', height: '100%', width: '100%' }}>
-        {/* 黑色遮罩层 */}
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0, 0, 0, 0.3)', zIndex: 1 }} />
+        {/* 黑色遮罩层 - hover时消失 */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.3)',
+            zIndex: 1,
+            transition: 'all 0.3s',
+            opacity: isHovered ? 0 : 1,
+          }}
+        />
 
-        {/* 图片区域 */}
+        {/* 图片区域 - hover时更亮 */}
         <img
           src={imageUrl}
           alt={title}
           style={{
             position: 'absolute',
             mixBlendMode: 'screen',
-            opacity: 0.6,
+            opacity: isHovered ? 0.9 : 0.6,
             width: '85%',
             height: '85%',
             objectFit: 'cover',
@@ -160,9 +172,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, subtitle, imageUrl, on
             right: 0,
             bottom: 'clamp(1.5rem, 25%, 10rem)',
             padding: '0 clamp(0.5rem, 20%, 1rem)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'clamp(0.25rem, 0.5vh, 0.5rem)',
             zIndex: 3,
           }}
         >
@@ -176,6 +185,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, subtitle, imageUrl, on
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
               margin: 0,
+              marginBottom: 'clamp(0.25rem, 0.5vh, 0.5rem)',
             }}
           >
             {title}
@@ -235,7 +245,7 @@ export function BsdLandingPage({
   const {
     enterWorkspace = '前沿资讯',
     designAgent = '设计智能体',
-    tags = ['懂设计', '知市场', '通工艺', '助营销'],
+    tags = [],
   } = i18n;
 
   const handleToWorkbench = () => {
@@ -483,8 +493,8 @@ export function BsdLandingPage({
               alignItems: 'flex-end',
               justifyContent: 'center',
               padding: '0 1rem',
-              marginTop: 'clamp(3rem, 5vh, 6rem)',
-              gap: 'clamp(0.75rem, 1vw, 1.5rem)',
+              marginTop: 'clamp(4rem, 8vh, 8rem)',
+              gap: 'clamp(0.5rem, 0.8vw, 1rem)',
               maxWidth: 'clamp(60rem, 90vw, 110rem)',
             }}
           >
