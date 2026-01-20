@@ -127,10 +127,14 @@ var BSD_CONFIG = {
   logo: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/bsd.ai.svg",
   backgroundImage: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/background.svg",
   sloganImage: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E5%B1%B1%E5%B7%9D%E5%88%B0%E6%9E%81%E5%9C%B0.svg",
+  primaryColor: "rgba(40, 82, 173, 1)",
+  borderRadius: 20,
   icons: {
     news: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E5%89%8D%E6%B2%BF%E8%B5%84%E8%AE%AF.svg",
     agent: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E8%AE%BE%E8%AE%A1%E6%99%BA%E8%83%BD%E4%BD%93.png",
-    arrowDefault: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E7%AE%AD%E5%A4%B42.svg"}
+    arrowDefault: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E7%AE%AD%E5%A4%B42.svg",
+    arrowHover: "https://inf-monkeys.oss-cn-beijing.aliyuncs.com/monkeys-assets/bsd/%E7%AE%AD%E5%A4%B41.svg"
+  }
 };
 var BSD_DEFAULT_FEATURE_CARDS = [
   {
@@ -1237,6 +1241,17 @@ registerTheme(
   }
 );
 
+exports.ARTIST_CONFIG = ARTIST_CONFIG;
+exports.ARTIST_DEFAULT_QUICK_ACTIONS = ARTIST_DEFAULT_QUICK_ACTIONS;
+exports.ArtistLandingPage = ArtistLandingPage;
+exports.BSD_CONFIG = BSD_CONFIG;
+exports.BSD_DEFAULT_FEATURE_CARDS = BSD_DEFAULT_FEATURE_CARDS;
+exports.BsdLandingPage = BsdLandingPage;
+exports.BsdToolboxPanel = BsdToolboxPanel;
+exports.CONCEPT_CONFIG = CONCEPT_CONFIG;
+exports.CONCEPT_DEFAULT_QUICK_ACTIONS = CONCEPT_DEFAULT_QUICK_ACTIONS;
+exports.ConceptDesignLandingPage = ConceptDesignLandingPage;
+exports.DefaultLandingPage = DefaultLandingPage;
 exports.DynamicComponent = DynamicComponent;
 exports.clearRegistry = clearRegistry;
 exports.getRegisteredComponents = getRegisteredComponents;

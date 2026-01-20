@@ -17,3 +17,6 @@ registerTheme(
 
 // 导出组件供直接使用
 export { DefaultLandingPage, DefaultToolboxPanel };
+
+// 导出类型
+export type { LandingPageProps as DefaultLandingPageProps } from './components/LandingPage';
