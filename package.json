@@ -1,7 +1,7 @@
 {
   "name": "@inf-monkeys/ui-themes",
   "version": "0.1.0",
-  "description": "Monkeys UI Theme Components Library - OEM customization components",
+  "description": "Monkeys UI Theme Components Library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

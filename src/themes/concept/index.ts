@@ -1,21 +1,24 @@
 import { registerTheme } from '../../registry';
+import { ConceptDesignLandingPage, CONCEPT_CONFIG, CONCEPT_DEFAULT_QUICK_ACTIONS } from './components/LandingPage';
 
-// Concept Design 主题 - 概念设计
-// TODO: 从 ui/src/components/landing/concept-design/ 迁移组件
-
+// 注册 Concept Design 主题
 registerTheme(
   'concept',
   {
-    // 'landing-page': ConceptDesignLandingPage,
-    // 'quick-action': QuickAction,
+    'landing-page': ConceptDesignLandingPage,
   },
   {
     name: 'Concept Design Theme',
     description: '概念设计主题 - 设计工作台',
+    version: '1.0.0',
   }
 );
 
+// 导出组件
+export { ConceptDesignLandingPage };
+
+// 导出类型
+export type { ConceptDesignLandingPageProps, QuickActionData } from './components/LandingPage';
+
 // 导出配置
-export const CONCEPT_CONFIG = {
-  brandName: '设计工作台',
-};
+export { CONCEPT_CONFIG, CONCEPT_DEFAULT_QUICK_ACTIONS };

@@ -1,23 +1,24 @@
 import { registerTheme } from '../../registry';
+import { ArtistLandingPage, ARTIST_CONFIG, ARTIST_DEFAULT_QUICK_ACTIONS } from './components/LandingPage';
 
-// Artist 主题 - 艺术家工作室
-// TODO: 从 ui/src/components/landing/artist/ 迁移组件
-
+// 注册 Artist 主题
 registerTheme(
   'artist',
   {
-    // 'landing-page': ArtistLandingPage,
-    // 'head-bar': HeadBar,
-    // 'quick-action': QuickAction,
-    // 'dynamic-background': DynamicBackground,
+    'landing-page': ArtistLandingPage,
   },
   {
     name: 'Artist Theme',
     description: '艺术家工作室主题',
+    version: '1.0.0',
   }
 );
 
+// 导出组件
+export { ArtistLandingPage };
+
+// 导出类型
+export type { ArtistLandingPageProps, QuickActionData } from './components/LandingPage';
+
 // 导出配置
-export const ARTIST_CONFIG = {
-  brandName: '艺术家工作室',
-};
+export { ARTIST_CONFIG, ARTIST_DEFAULT_QUICK_ACTIONS };
