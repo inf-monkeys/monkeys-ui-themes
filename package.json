@@ -1,5 +1,5 @@
 {
-  "name": "@inf-monkeys/ui-themes",
+  "name": "@inf-monkeys/monkeys-ui-themes",
   "version": "0.1.0",
   "description": "Monkeys UI Theme Components Library",
   "main": "dist/index.js",
