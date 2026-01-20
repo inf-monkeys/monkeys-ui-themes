@@ -79,9 +79,9 @@ registerTheme('my-theme', {
 | 主题 ID | 名称 | 描述 |
 |---------|------|------|
 | `default` | Default Theme | 默认主题，提供基础落地页组件 |
-| `bsd` | BSD Theme | 波司登品牌定制主题 |
-| `artist` | Artist Theme | 艺术家工作室主题 |
-| `concept-design` | Concept Design Theme | 概念设计主题 |
+| `bsd` | BSD Theme | 波司登定制主题 |
+| `artist` | Artist Theme | 艺术家定制主题 |
+| `concept-design` | Concept Design Theme | 概念设计定制主题 |
 
 ## 组件列表
 
