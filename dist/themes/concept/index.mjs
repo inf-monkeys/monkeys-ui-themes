@@ -40,18 +40,20 @@ var QuickActionCard = ({ cardUrl, onClick }) => {
     {
       onClick,
       style: {
+        height: "350px",
+        width: "260px",
         cursor: "pointer",
-        transition: "transform 0.3s, opacity 0.3s"
+        border: "1.5px solid #e0e0e0",
+        backgroundColor: "rgba(255, 255, 255, 0.7)",
+        transition: "all 0.3s"
       },
       onMouseEnter: (e) => {
-        e.currentTarget.style.transform = "scale(1.02)";
-        e.currentTarget.style.opacity = "0.9";
+        e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 1)";
       },
       onMouseLeave: (e) => {
-        e.currentTarget.style.transform = "scale(1)";
-        e.currentTarget.style.opacity = "1";
+        e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
       },
-      children: /* @__PURE__ */ jsx("img", { src: cardUrl, alt: "", style: { height: "auto", width: "100%" } })
+      children: /* @__PURE__ */ jsx("img", { src: cardUrl, alt: "", style: { width: "100%", height: "100%" } })
     }
   );
 };
