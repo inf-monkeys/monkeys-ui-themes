@@ -3,7 +3,7 @@ import { ConceptDesignLandingPage, CONCEPT_CONFIG, CONCEPT_DEFAULT_QUICK_ACTIONS
 
 // 注册 Concept Design 主题
 registerTheme(
-  'concept',
+  'concept-design',
   {
     'landing-page': ConceptDesignLandingPage,
   },

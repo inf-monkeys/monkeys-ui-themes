@@ -220,7 +220,7 @@ function ConceptDesignLandingPage({
 
 // src/themes/concept/index.ts
 registerTheme(
-  "concept",
+  "concept-design",
   {
     "landing-page": ConceptDesignLandingPage
   },
