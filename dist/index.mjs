@@ -313,6 +313,10 @@ function BsdLandingPage({
       return;
     }
     if (isToolbox) {
+      if (onCardClick) {
+        onCardClick("AI\u5DE5\u5177\u7BB1");
+        return;
+      }
       onEnterWorkbench?.();
     } else {
       onCardClick?.(title);

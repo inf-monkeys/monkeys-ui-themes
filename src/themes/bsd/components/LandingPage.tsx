@@ -262,6 +262,12 @@ export function BsdLandingPage({
       return;
     }
     if (isToolbox) {
+      // BSD 约定：landing 最后一张“更多AI工具”应进入工作台并打开 AI 工具箱
+      // 优先使用 onCardClick 以便业务方设置当前页面；若未提供，则回退为进入工作台
+      if (onCardClick) {
+        onCardClick('AI工具箱');
+        return;
+      }
       onEnterWorkbench?.();
     } else {
       onCardClick?.(title);
