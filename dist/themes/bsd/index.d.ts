@@ -20,8 +20,6 @@ interface BsdLandingPageProps {
     featureCards?: FeatureCardData[];
     /** 点击进入工作台 */
     onEnterWorkbench?: () => void;
-    /** 点击“前沿资讯”（灵感画廊入口，由业务侧处理跳转） */
-    onNewsClick?: () => void;
     /** 点击登录 */
     onLogin?: () => void;
     /** 点击卡片 */
@@ -51,7 +49,7 @@ declare const BSD_CONFIG: {
     };
 };
 declare const BSD_DEFAULT_FEATURE_CARDS: FeatureCardData[];
-declare function BsdLandingPage({ isAuthenticated, user, featureCards, onEnterWorkbench, onNewsClick, onLogin, onCardClick, className, style, i18n, }: BsdLandingPageProps): react_jsx_runtime.JSX.Element;
+declare function BsdLandingPage({ isAuthenticated, user, featureCards, onEnterWorkbench, onLogin, onCardClick, className, style, i18n, }: BsdLandingPageProps): react_jsx_runtime.JSX.Element;
 
 interface ToolDefinition {
     id: string;

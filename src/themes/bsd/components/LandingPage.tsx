@@ -32,8 +32,6 @@ export interface BsdLandingPageProps {
   featureCards?: FeatureCardData[];
   /** 点击进入工作台 */
   onEnterWorkbench?: () => void;
-  /** 点击“前沿资讯”（灵感画廊入口，由业务侧处理跳转） */
-  onNewsClick?: () => void;
   /** 点击登录 */
   onLogin?: () => void;
   /** 点击卡片 */
@@ -99,9 +97,6 @@ export const BSD_DEFAULT_FEATURE_CARDS: FeatureCardData[] = [
     isToolbox: true,
   },
 ];
-
-const BSD_HEADER_HEIGHT = 'clamp(4.5rem, 8vh, 7.5rem)';
-const BSD_FEATURE_CARDS_MAX_WIDTH = 'clamp(60rem, 90vw, 110rem)';
 
 // ==================== 子组件 ====================
 
@@ -241,7 +236,6 @@ export function BsdLandingPage({
   user,
   featureCards = BSD_DEFAULT_FEATURE_CARDS,
   onEnterWorkbench,
-  onNewsClick,
   onLogin,
   onCardClick,
   className = '',
@@ -253,20 +247,6 @@ export function BsdLandingPage({
     designAgent = '设计智能体',
     tags = [],
   } = i18n;
-
-  const handleNewsClick = () => {
-    if (!isAuthenticated) {
-      onLogin?.();
-      return;
-    }
-
-    if (onNewsClick) {
-      onNewsClick();
-      return;
-    }
-
-    onEnterWorkbench?.();
-  };
 
   const handleToWorkbench = () => {
     if (isAuthenticated) {
@@ -397,10 +377,10 @@ export function BsdLandingPage({
           left: 0,
           right: 0,
           bottom: 0,
-          top: BSD_HEADER_HEIGHT,
-          backgroundImage: `radial-gradient(ellipse at 50% 100%, rgba(45, 98, 255, 0.35) 0%, rgba(0, 0, 0, 0) 65%), url('${BSD_CONFIG.backgroundImage}')`,
+          top: 'clamp(4.5rem, 8vh, 7.5rem)',
+          backgroundImage: `url('${BSD_CONFIG.backgroundImage}')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center bottom',
+          backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
         }}
       />
@@ -411,149 +391,104 @@ export function BsdLandingPage({
           position: 'relative',
           zIndex: 10,
           display: 'flex',
-          minHeight: `calc(100vh - ${BSD_HEADER_HEIGHT})`,
+          minHeight: 'calc(100vh - 4.5rem)',
           flexDirection: 'column',
           alignItems: 'center',
-          padding: `0 1rem clamp(2rem, 4vh, 4rem)`,
+          padding: '0 1rem 2rem',
         }}
       >
         {/* 标题和按钮区域 */}
         <div
           style={{
             display: 'flex',
-            flex: 1,
-            width: '100%',
-            maxWidth: BSD_FEATURE_CARDS_MAX_WIDTH,
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'space-between',
             textAlign: 'center',
-            paddingTop: 'clamp(2.5rem, 5vh, 5.5rem)',
+            marginTop: 'clamp(2rem, 4vh, 3.75rem)',
           }}
         >
+          {/* Slogan 图片 */}
+          <div style={{ marginBottom: 'clamp(1.5rem, 3vh, 2rem)' }}>
+            <img
+              src={BSD_CONFIG.sloganImage}
+              alt="从山川到极地的风格指南"
+              style={{ height: 'auto', width: '100%', maxWidth: 'clamp(30rem, 60vw, 80rem)', padding: '0 1rem' }}
+            />
+          </div>
+
+          {/* 标签区域 */}
           <div
             style={{
               display: 'flex',
-              width: '100%',
-              flexDirection: 'column',
+              flexWrap: 'wrap',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 'clamp(1.5rem, 3vh, 3.5rem)',
+              color: '#fff',
+              marginBottom: 'clamp(2rem, 3vh, 3rem)',
+              gap: 'clamp(0.75rem, 1.5vw, 1.5rem)',
             }}
           >
-            {/* Slogan 图片 */}
-            <div style={{ width: '100%' }}>
-              <img
-                src={BSD_CONFIG.sloganImage}
-                alt="从山川到极地的风格指南"
-                style={{
-                  height: 'auto',
-                  width: '100%',
-                  maxWidth: 'clamp(30rem, 60vw, 80rem)',
-                  padding: '0 1rem',
-                }}
-              />
-            </div>
+            {tags.map((tag, index) => (
+              <React.Fragment key={tag}>
+                <span style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}>{tag}</span>
+                {index < tags.length - 1 && <span style={{ color: 'rgba(255,255,255,0.6)' }}>|</span>}
+              </React.Fragment>
+            ))}
+          </div>
 
-            {/* 标签区域 */}
-            {tags.length > 0 && (
-              <div
+          {/* 按钮组 */}
+          <div style={{ display: 'flex', flexDirection: 'row', gap: 'clamp(1.5rem, 3vw, 5rem)', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <button
+              onClick={handleToWorkbench}
+              style={buttonBaseStyle}
+              onMouseEnter={(e) => handleButtonHover(e, true)}
+              onMouseLeave={(e) => handleButtonHover(e, false)}
+            >
+              <span
                 style={{
                   display: 'flex',
-                  flexWrap: 'wrap',
+                  width: '100%',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff',
-                  gap: 'clamp(0.75rem, 1.5vw, 1.5rem)',
+                  justifyContent: 'space-between',
+                  background: 'linear-gradient(270deg, #9AB3FF 0%, rgba(180, 169, 245, 0) 100%), #FFFFFF',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                 }}
               >
-                {tags.map((tag, index) => (
-                  <React.Fragment key={tag}>
-                    <span style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}>{tag}</span>
-                    {index < tags.length - 1 && <span style={{ color: 'rgba(255,255,255,0.6)' }}>|</span>}
-                  </React.Fragment>
-                ))}
-              </div>
-            )}
+                <span style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 0.8vw, 0.8rem)' }}>
+                  <img src={BSD_CONFIG.icons.news} alt="" style={{ width: 'clamp(1rem, 1.5vw, 1.5rem)', height: 'clamp(1rem, 1.5vw, 1.5rem)' }} />
+                  {enterWorkspace}
+                </span>
+                <img src={BSD_CONFIG.icons.arrowDefault} alt="" style={{ width: 'clamp(1rem, 1.5vw, 1.5rem)', height: 'clamp(1rem, 1.5vw, 1.5rem)' }} />
+              </span>
+            </button>
 
-            {/* 按钮组 */}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                gap: 'clamp(1.5rem, 3vw, 5rem)',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-              }}
+            <button
+              onClick={handleToWorkbench}
+              style={buttonBaseStyle}
+              onMouseEnter={(e) => handleButtonHover(e, true)}
+              onMouseLeave={(e) => handleButtonHover(e, false)}
             >
-              <button
-                onClick={handleNewsClick}
-                style={buttonBaseStyle}
-                onMouseEnter={(e) => handleButtonHover(e, true)}
-                onMouseLeave={(e) => handleButtonHover(e, false)}
+              <span
+                style={{
+                  display: 'flex',
+                  width: '100%',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  background: 'linear-gradient(270deg, #9AB3FF 0%, rgba(180, 169, 245, 0) 100%), #FFFFFF',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
               >
-                <span
-                  style={{
-                    display: 'flex',
-                    width: '100%',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    background: 'linear-gradient(270deg, #9AB3FF 0%, rgba(180, 169, 245, 0) 100%), #FFFFFF',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  <span style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 0.8vw, 0.8rem)' }}>
-                    <img
-                      src={BSD_CONFIG.icons.news}
-                      alt=""
-                      style={{ width: 'clamp(1rem, 1.5vw, 1.5rem)', height: 'clamp(1rem, 1.5vw, 1.5rem)' }}
-                    />
-                    {enterWorkspace}
-                  </span>
-                  <img
-                    src={BSD_CONFIG.icons.arrowDefault}
-                    alt=""
-                    style={{ width: 'clamp(1rem, 1.5vw, 1.5rem)', height: 'clamp(1rem, 1.5vw, 1.5rem)' }}
-                  />
+                <span style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 0.8vw, 0.8rem)' }}>
+                  <img src={BSD_CONFIG.icons.agent} alt="" style={{ width: 'clamp(1rem, 1.5vw, 1.5rem)', height: 'clamp(1rem, 1.5vw, 1.5rem)' }} />
+                  {designAgent}
                 </span>
-              </button>
-
-              <button
-                onClick={handleToWorkbench}
-                style={buttonBaseStyle}
-                onMouseEnter={(e) => handleButtonHover(e, true)}
-                onMouseLeave={(e) => handleButtonHover(e, false)}
-              >
-                <span
-                  style={{
-                    display: 'flex',
-                    width: '100%',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    background: 'linear-gradient(270deg, #9AB3FF 0%, rgba(180, 169, 245, 0) 100%), #FFFFFF',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  <span style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 0.8vw, 0.8rem)' }}>
-                    <img
-                      src={BSD_CONFIG.icons.agent}
-                      alt=""
-                      style={{ width: 'clamp(1rem, 1.5vw, 1.5rem)', height: 'clamp(1rem, 1.5vw, 1.5rem)' }}
-                    />
-                    {designAgent}
-                  </span>
-                  <img
-                    src={BSD_CONFIG.icons.arrowDefault}
-                    alt=""
-                    style={{ width: 'clamp(1rem, 1.5vw, 1.5rem)', height: 'clamp(1rem, 1.5vw, 1.5rem)' }}
-                  />
-                </span>
-              </button>
-            </div>
+                <img src={BSD_CONFIG.icons.arrowDefault} alt="" style={{ width: 'clamp(1rem, 1.5vw, 1.5rem)', height: 'clamp(1rem, 1.5vw, 1.5rem)' }} />
+              </span>
+            </button>
           </div>
 
           {/* 功能卡片区域 */}
@@ -564,9 +499,9 @@ export function BsdLandingPage({
               alignItems: 'flex-end',
               justifyContent: 'center',
               padding: '0 1rem',
+              marginTop: 'clamp(4rem, 8vh, 8rem)',
               gap: 'clamp(0.5rem, 0.8vw, 1rem)',
-              maxWidth: BSD_FEATURE_CARDS_MAX_WIDTH,
-              flexWrap: 'wrap',
+              maxWidth: 'clamp(60rem, 90vw, 110rem)',
             }}
           >
             {featureCards.map((card) => (

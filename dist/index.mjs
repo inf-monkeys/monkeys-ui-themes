@@ -163,8 +163,6 @@ var BSD_DEFAULT_FEATURE_CARDS = [
     isToolbox: true
   }
 ];
-var BSD_HEADER_HEIGHT = "clamp(4.5rem, 8vh, 7.5rem)";
-var BSD_FEATURE_CARDS_MAX_WIDTH = "clamp(60rem, 90vw, 110rem)";
 var FeatureCard = ({ title, subtitle, imageUrl, onClick }) => {
   const [isHovered, setIsHovered] = React.useState(false);
   return /* @__PURE__ */ jsx(
@@ -291,7 +289,6 @@ function BsdLandingPage({
   user,
   featureCards = BSD_DEFAULT_FEATURE_CARDS,
   onEnterWorkbench,
-  onNewsClick,
   onLogin,
   onCardClick,
   className = "",
@@ -303,17 +300,6 @@ function BsdLandingPage({
     designAgent = "\u8BBE\u8BA1\u667A\u80FD\u4F53",
     tags = []
   } = i18n;
-  const handleNewsClick = () => {
-    if (!isAuthenticated) {
-      onLogin?.();
-      return;
-    }
-    if (onNewsClick) {
-      onNewsClick();
-      return;
-    }
-    onEnterWorkbench?.();
-  };
   const handleToWorkbench = () => {
     if (isAuthenticated) {
       onEnterWorkbench?.();
@@ -433,10 +419,10 @@ function BsdLandingPage({
               left: 0,
               right: 0,
               bottom: 0,
-              top: BSD_HEADER_HEIGHT,
-              backgroundImage: `radial-gradient(ellipse at 50% 100%, rgba(45, 98, 255, 0.35) 0%, rgba(0, 0, 0, 0) 65%), url('${BSD_CONFIG.backgroundImage}')`,
+              top: "clamp(4.5rem, 8vh, 7.5rem)",
+              backgroundImage: `url('${BSD_CONFIG.backgroundImage}')`,
               backgroundSize: "cover",
-              backgroundPosition: "center bottom",
+              backgroundPosition: "center top",
               backgroundRepeat: "no-repeat"
             }
           }
@@ -448,175 +434,112 @@ function BsdLandingPage({
               position: "relative",
               zIndex: 10,
               display: "flex",
-              minHeight: `calc(100vh - ${BSD_HEADER_HEIGHT})`,
+              minHeight: "calc(100vh - 4.5rem)",
               flexDirection: "column",
               alignItems: "center",
-              padding: `0 1rem clamp(2rem, 4vh, 4rem)`
+              padding: "0 1rem 2rem"
             },
             children: /* @__PURE__ */ jsxs(
               "div",
               {
                 style: {
                   display: "flex",
-                  flex: 1,
-                  width: "100%",
-                  maxWidth: BSD_FEATURE_CARDS_MAX_WIDTH,
                   flexDirection: "column",
                   alignItems: "center",
-                  justifyContent: "space-between",
                   textAlign: "center",
-                  paddingTop: "clamp(2.5rem, 5vh, 5.5rem)"
+                  marginTop: "clamp(2rem, 4vh, 3.75rem)"
                 },
                 children: [
-                  /* @__PURE__ */ jsxs(
+                  /* @__PURE__ */ jsx("div", { style: { marginBottom: "clamp(1.5rem, 3vh, 2rem)" }, children: /* @__PURE__ */ jsx(
+                    "img",
+                    {
+                      src: BSD_CONFIG.sloganImage,
+                      alt: "\u4ECE\u5C71\u5DDD\u5230\u6781\u5730\u7684\u98CE\u683C\u6307\u5357",
+                      style: { height: "auto", width: "100%", maxWidth: "clamp(30rem, 60vw, 80rem)", padding: "0 1rem" }
+                    }
+                  ) }),
+                  /* @__PURE__ */ jsx(
                     "div",
                     {
                       style: {
                         display: "flex",
-                        width: "100%",
-                        flexDirection: "column",
+                        flexWrap: "wrap",
                         alignItems: "center",
                         justifyContent: "center",
-                        gap: "clamp(1.5rem, 3vh, 3.5rem)"
+                        color: "#fff",
+                        marginBottom: "clamp(2rem, 3vh, 3rem)",
+                        gap: "clamp(0.75rem, 1.5vw, 1.5rem)"
                       },
-                      children: [
-                        /* @__PURE__ */ jsx("div", { style: { width: "100%" }, children: /* @__PURE__ */ jsx(
-                          "img",
+                      children: tags.map((tag, index) => /* @__PURE__ */ jsxs(React.Fragment, { children: [
+                        /* @__PURE__ */ jsx("span", { style: { fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }, children: tag }),
+                        index < tags.length - 1 && /* @__PURE__ */ jsx("span", { style: { color: "rgba(255,255,255,0.6)" }, children: "|" })
+                      ] }, tag))
+                    }
+                  ),
+                  /* @__PURE__ */ jsxs("div", { style: { display: "flex", flexDirection: "row", gap: "clamp(1.5rem, 3vw, 5rem)", flexWrap: "wrap", justifyContent: "center" }, children: [
+                    /* @__PURE__ */ jsx(
+                      "button",
+                      {
+                        onClick: handleToWorkbench,
+                        style: buttonBaseStyle,
+                        onMouseEnter: (e) => handleButtonHover(e, true),
+                        onMouseLeave: (e) => handleButtonHover(e, false),
+                        children: /* @__PURE__ */ jsxs(
+                          "span",
                           {
-                            src: BSD_CONFIG.sloganImage,
-                            alt: "\u4ECE\u5C71\u5DDD\u5230\u6781\u5730\u7684\u98CE\u683C\u6307\u5357",
                             style: {
-                              height: "auto",
+                              display: "flex",
                               width: "100%",
-                              maxWidth: "clamp(30rem, 60vw, 80rem)",
-                              padding: "0 1rem"
-                            }
-                          }
-                        ) }),
-                        tags.length > 0 && /* @__PURE__ */ jsx(
-                          "div",
-                          {
-                            style: {
-                              display: "flex",
-                              flexWrap: "wrap",
                               alignItems: "center",
-                              justifyContent: "center",
-                              color: "#fff",
-                              gap: "clamp(0.75rem, 1.5vw, 1.5rem)"
-                            },
-                            children: tags.map((tag, index) => /* @__PURE__ */ jsxs(React.Fragment, { children: [
-                              /* @__PURE__ */ jsx("span", { style: { fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }, children: tag }),
-                              index < tags.length - 1 && /* @__PURE__ */ jsx("span", { style: { color: "rgba(255,255,255,0.6)" }, children: "|" })
-                            ] }, tag))
-                          }
-                        ),
-                        /* @__PURE__ */ jsxs(
-                          "div",
-                          {
-                            style: {
-                              display: "flex",
-                              flexDirection: "row",
-                              gap: "clamp(1.5rem, 3vw, 5rem)",
-                              flexWrap: "wrap",
-                              justifyContent: "center"
+                              justifyContent: "space-between",
+                              background: "linear-gradient(270deg, #9AB3FF 0%, rgba(180, 169, 245, 0) 100%), #FFFFFF",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              backgroundClip: "text"
                             },
                             children: [
-                              /* @__PURE__ */ jsx(
-                                "button",
-                                {
-                                  onClick: handleNewsClick,
-                                  style: buttonBaseStyle,
-                                  onMouseEnter: (e) => handleButtonHover(e, true),
-                                  onMouseLeave: (e) => handleButtonHover(e, false),
-                                  children: /* @__PURE__ */ jsxs(
-                                    "span",
-                                    {
-                                      style: {
-                                        display: "flex",
-                                        width: "100%",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        background: "linear-gradient(270deg, #9AB3FF 0%, rgba(180, 169, 245, 0) 100%), #FFFFFF",
-                                        WebkitBackgroundClip: "text",
-                                        WebkitTextFillColor: "transparent",
-                                        backgroundClip: "text"
-                                      },
-                                      children: [
-                                        /* @__PURE__ */ jsxs("span", { style: { display: "flex", alignItems: "center", gap: "clamp(0.5rem, 0.8vw, 0.8rem)" }, children: [
-                                          /* @__PURE__ */ jsx(
-                                            "img",
-                                            {
-                                              src: BSD_CONFIG.icons.news,
-                                              alt: "",
-                                              style: { width: "clamp(1rem, 1.5vw, 1.5rem)", height: "clamp(1rem, 1.5vw, 1.5rem)" }
-                                            }
-                                          ),
-                                          enterWorkspace
-                                        ] }),
-                                        /* @__PURE__ */ jsx(
-                                          "img",
-                                          {
-                                            src: BSD_CONFIG.icons.arrowDefault,
-                                            alt: "",
-                                            style: { width: "clamp(1rem, 1.5vw, 1.5rem)", height: "clamp(1rem, 1.5vw, 1.5rem)" }
-                                          }
-                                        )
-                                      ]
-                                    }
-                                  )
-                                }
-                              ),
-                              /* @__PURE__ */ jsx(
-                                "button",
-                                {
-                                  onClick: handleToWorkbench,
-                                  style: buttonBaseStyle,
-                                  onMouseEnter: (e) => handleButtonHover(e, true),
-                                  onMouseLeave: (e) => handleButtonHover(e, false),
-                                  children: /* @__PURE__ */ jsxs(
-                                    "span",
-                                    {
-                                      style: {
-                                        display: "flex",
-                                        width: "100%",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        background: "linear-gradient(270deg, #9AB3FF 0%, rgba(180, 169, 245, 0) 100%), #FFFFFF",
-                                        WebkitBackgroundClip: "text",
-                                        WebkitTextFillColor: "transparent",
-                                        backgroundClip: "text"
-                                      },
-                                      children: [
-                                        /* @__PURE__ */ jsxs("span", { style: { display: "flex", alignItems: "center", gap: "clamp(0.5rem, 0.8vw, 0.8rem)" }, children: [
-                                          /* @__PURE__ */ jsx(
-                                            "img",
-                                            {
-                                              src: BSD_CONFIG.icons.agent,
-                                              alt: "",
-                                              style: { width: "clamp(1rem, 1.5vw, 1.5rem)", height: "clamp(1rem, 1.5vw, 1.5rem)" }
-                                            }
-                                          ),
-                                          designAgent
-                                        ] }),
-                                        /* @__PURE__ */ jsx(
-                                          "img",
-                                          {
-                                            src: BSD_CONFIG.icons.arrowDefault,
-                                            alt: "",
-                                            style: { width: "clamp(1rem, 1.5vw, 1.5rem)", height: "clamp(1rem, 1.5vw, 1.5rem)" }
-                                          }
-                                        )
-                                      ]
-                                    }
-                                  )
-                                }
-                              )
+                              /* @__PURE__ */ jsxs("span", { style: { display: "flex", alignItems: "center", gap: "clamp(0.5rem, 0.8vw, 0.8rem)" }, children: [
+                                /* @__PURE__ */ jsx("img", { src: BSD_CONFIG.icons.news, alt: "", style: { width: "clamp(1rem, 1.5vw, 1.5rem)", height: "clamp(1rem, 1.5vw, 1.5rem)" } }),
+                                enterWorkspace
+                              ] }),
+                              /* @__PURE__ */ jsx("img", { src: BSD_CONFIG.icons.arrowDefault, alt: "", style: { width: "clamp(1rem, 1.5vw, 1.5rem)", height: "clamp(1rem, 1.5vw, 1.5rem)" } })
                             ]
                           }
                         )
-                      ]
-                    }
-                  ),
+                      }
+                    ),
+                    /* @__PURE__ */ jsx(
+                      "button",
+                      {
+                        onClick: handleToWorkbench,
+                        style: buttonBaseStyle,
+                        onMouseEnter: (e) => handleButtonHover(e, true),
+                        onMouseLeave: (e) => handleButtonHover(e, false),
+                        children: /* @__PURE__ */ jsxs(
+                          "span",
+                          {
+                            style: {
+                              display: "flex",
+                              width: "100%",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                              background: "linear-gradient(270deg, #9AB3FF 0%, rgba(180, 169, 245, 0) 100%), #FFFFFF",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              backgroundClip: "text"
+                            },
+                            children: [
+                              /* @__PURE__ */ jsxs("span", { style: { display: "flex", alignItems: "center", gap: "clamp(0.5rem, 0.8vw, 0.8rem)" }, children: [
+                                /* @__PURE__ */ jsx("img", { src: BSD_CONFIG.icons.agent, alt: "", style: { width: "clamp(1rem, 1.5vw, 1.5rem)", height: "clamp(1rem, 1.5vw, 1.5rem)" } }),
+                                designAgent
+                              ] }),
+                              /* @__PURE__ */ jsx("img", { src: BSD_CONFIG.icons.arrowDefault, alt: "", style: { width: "clamp(1rem, 1.5vw, 1.5rem)", height: "clamp(1rem, 1.5vw, 1.5rem)" } })
+                            ]
+                          }
+                        )
+                      }
+                    )
+                  ] }),
                   /* @__PURE__ */ jsx(
                     "div",
                     {
@@ -626,9 +549,9 @@ function BsdLandingPage({
                         alignItems: "flex-end",
                         justifyContent: "center",
                         padding: "0 1rem",
+                        marginTop: "clamp(4rem, 8vh, 8rem)",
                         gap: "clamp(0.5rem, 0.8vw, 1rem)",
-                        maxWidth: BSD_FEATURE_CARDS_MAX_WIDTH,
-                        flexWrap: "wrap"
+                        maxWidth: "clamp(60rem, 90vw, 110rem)"
                       },
                       children: featureCards.map((card) => /* @__PURE__ */ jsx(
                         FeatureCard,
