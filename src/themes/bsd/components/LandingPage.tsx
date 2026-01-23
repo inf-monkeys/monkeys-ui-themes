@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 // ==================== 类型定义 ====================
 
@@ -108,7 +108,7 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, subtitle, imageUrl, onClick }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
@@ -170,7 +170,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, subtitle, imageUrl, on
             position: 'absolute',
             left: 0,
             right: 0,
-            bottom: 'clamp(1.5rem, 25%, 10rem)',
+            top: 'clamp(10rem, 60%, 20rem)',
             padding: '0 clamp(0.5rem, 20%, 1rem)',
             zIndex: 3,
           }}
@@ -186,6 +186,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, subtitle, imageUrl, on
               backgroundClip: 'text',
               margin: 0,
               marginBottom: 'clamp(0.25rem, 0.5vh, 0.5rem)',
+              lineHeight: 1.2,
             }}
           >
             {title}
@@ -200,6 +201,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, subtitle, imageUrl, on
               backgroundClip: 'text',
               opacity: 0.8,
               margin: 0,
+              lineHeight: 1.2,
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
             }}
           >
             {subtitle}
@@ -404,11 +410,11 @@ export function BsdLandingPage({
             flexDirection: 'column',
             alignItems: 'center',
             textAlign: 'center',
-            marginTop: 'clamp(2rem, 4vh, 3.75rem)',
+            marginTop: 'clamp(1.5rem, 6vh, 4.5rem)',
           }}
         >
           {/* Slogan 图片 */}
-          <div style={{ marginBottom: 'clamp(1.5rem, 3vh, 2rem)' }}>
+          <div style={{ marginBottom: 'clamp(3rem, 8.5vh, 8.5rem)' }}>
             <img
               src={BSD_CONFIG.sloganImage}
               alt="从山川到极地的风格指南"
@@ -499,7 +505,7 @@ export function BsdLandingPage({
               alignItems: 'flex-end',
               justifyContent: 'center',
               padding: '0 1rem',
-              marginTop: 'clamp(4rem, 8vh, 8rem)',
+              marginTop: 'clamp(3.5rem, 8.5vh, 8.5rem)',
               gap: 'clamp(0.5rem, 0.8vw, 1rem)',
               maxWidth: 'clamp(60rem, 90vw, 110rem)',
             }}

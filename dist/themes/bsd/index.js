@@ -62,7 +62,7 @@ var BSD_DEFAULT_FEATURE_CARDS = [
   }
 ];
 var FeatureCard = ({ title, subtitle, imageUrl, onClick }) => {
-  const [isHovered, setIsHovered] = React__default.default.useState(false);
+  const [isHovered, setIsHovered] = React.useState(false);
   return /* @__PURE__ */ jsxRuntime.jsx(
     "div",
     {
@@ -126,7 +126,7 @@ var FeatureCard = ({ title, subtitle, imageUrl, onClick }) => {
               position: "absolute",
               left: 0,
               right: 0,
-              bottom: "clamp(1.5rem, 25%, 10rem)",
+              top: "clamp(10rem, 60%, 20rem)",
               padding: "0 clamp(0.5rem, 20%, 1rem)",
               zIndex: 3
             },
@@ -143,7 +143,8 @@ var FeatureCard = ({ title, subtitle, imageUrl, onClick }) => {
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                     margin: 0,
-                    marginBottom: "clamp(0.25rem, 0.5vh, 0.5rem)"
+                    marginBottom: "clamp(0.25rem, 0.5vh, 0.5rem)",
+                    lineHeight: 1.2
                   },
                   children: title
                 }
@@ -159,7 +160,12 @@ var FeatureCard = ({ title, subtitle, imageUrl, onClick }) => {
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                     opacity: 0.8,
-                    margin: 0
+                    margin: 0,
+                    lineHeight: 1.2,
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden"
                   },
                   children: subtitle
                 }
@@ -345,10 +351,10 @@ function BsdLandingPage({
                   flexDirection: "column",
                   alignItems: "center",
                   textAlign: "center",
-                  marginTop: "clamp(2rem, 4vh, 3.75rem)"
+                  marginTop: "clamp(1.5rem, 6vh, 4.5rem)"
                 },
                 children: [
-                  /* @__PURE__ */ jsxRuntime.jsx("div", { style: { marginBottom: "clamp(1.5rem, 3vh, 2rem)" }, children: /* @__PURE__ */ jsxRuntime.jsx(
+                  /* @__PURE__ */ jsxRuntime.jsx("div", { style: { marginBottom: "clamp(3rem, 8.5vh, 8.5rem)" }, children: /* @__PURE__ */ jsxRuntime.jsx(
                     "img",
                     {
                       src: BSD_CONFIG.sloganImage,
@@ -447,7 +453,7 @@ function BsdLandingPage({
                         alignItems: "flex-end",
                         justifyContent: "center",
                         padding: "0 1rem",
-                        marginTop: "clamp(4rem, 8vh, 8rem)",
+                        marginTop: "clamp(3.5rem, 8.5vh, 8.5rem)",
                         gap: "clamp(0.5rem, 0.8vw, 1rem)",
                         maxWidth: "clamp(60rem, 90vw, 110rem)"
                       },
