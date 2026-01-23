@@ -384,6 +384,7 @@ export function BsdLandingPage({
           right: 0,
           bottom: 0,
           top: 'clamp(4.5rem, 8vh, 7.5rem)',
+          minHeight: '120vh',
           backgroundImage: `url('${BSD_CONFIG.backgroundImage}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
